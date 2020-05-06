@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>使用Google官方推荐的webp进行图片压缩 - </title>
+        <meta name="Description" content="WebP是一种相对较新的开源图像格式，它为Google设计的网页上的图像提供了卓越的无损和有损压缩。"><meta property="og:title" content="使用Google官方推荐的webp进行图片压缩" />
+<meta property="og:description" content="WebP是一种相对较新的开源图像格式，它为Google设计的网页上的图像提供了卓越的无损和有损压缩。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://chenjunxin.com/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" />
+<meta property="article:published_time" content="2020-03-21T17:11:16+00:00" />
+<meta property="article:modified_time" content="2020-03-21T17:11:16+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用Google官方推荐的webp进行图片压缩"/>
+<meta name="twitter:description" content="WebP是一种相对较新的开源图像格式，它为Google设计的网页上的图像提供了卓越的无损和有损压缩。"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://chenjunxin.com/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" /><link rel="prev" href="https://chenjunxin.com/md5-sha-gpg%E5%92%8Cpgp/" /><link rel="next" href="https://chenjunxin.com/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><meta name="google-site-verification" content="SEgZDIT-0OdxnPgHgsC3fOvdOF7O4zxgMnV25A4601U" /><meta name="baidu-site-verification" content="c694f10d0cd3c87d69a8be39bb4e7a46" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "使用Google官方推荐的webp进行图片压缩",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/chenjunxin.com\/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9\/"
+        },"image": {
+                "@type": "ImageObject",
+                "url": "https:\/\/chenjunxin.com\/cover.png",
+                "width":  800 ,
+                "height":  600 
+            },"genre": "posts","keywords": "图片压缩","wordcount":  1787 ,
+        "url": "https:\/\/chenjunxin.com\/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9\/","datePublished": "2020-03-21T17:11:16+00:00","dateModified": "2020-03-21T17:11:16+00:00","publisher": {
+                "@type": "Organization",
+                "name": "JohnnyChan",
+                "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/chenjunxin.com\/logo.png",
+                "width":  127 ,
+                "height":  40 
+                }
+            },"author": {
+                "@type": "Person",
+                "name": "JohnnyChan"
+            },"description": "WebP是一种相对较新的开源图像格式，它为Google设计的网页上的图像提供了卓越的无损和有损压缩。"
+    }
+    </script></head>
+    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title=""></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title=""></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">使用Google官方推荐的webp进行图片压缩</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>JohnnyChan</a></span>&nbsp;
+                    <span class="post-category">收录于<a href="/categories/%E5%B7%A5%E5%85%B7/">
+                                <i class="far fa-folder fa-fw"></i>工具
+                            </a>&nbsp;<a href="/categories/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/">
+                                <i class="far fa-folder fa-fw"></i>图片压缩
+                            </a>&nbsp;<a href="/categories/webp/">
+                                <i class="far fa-folder fa-fw"></i>WebP
+                            </a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-03-21>2020-03-21</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 1787 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#安装webp">安装WebP</a></li>
+    <li><a href="#webp转换实例">WebP转换实例</a></li>
+    <li><a href="#cwebp使用">cwebp使用</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="webp介绍">WebP介绍</h1>
+<p> WebP是一种相对较新的开源图像格式，可为Web上的图像提供出色的无损和有损压缩。 使用WebP，网站管理员和Web开发人员可以创建更小，更丰富的图像，从而使Web更快。<br>
+ 与PNG相比，WebP无损图像的尺寸要小26％。 在同等的SSIM质量指数下，WebP有损图像比同类JPEG图像小25-34％。无损WebP支持透明性（也称为Alpha通道），而仅增加了22％的字节数。 对于可以接受有损RGB压缩的情况，有损WebP还支持透明性，与PNG相比，文件大小通常小3倍。<br>
+ 既然我们已经认识到在可能的情况下使用WebP格式是有价值的，那么很重要的一点是—它不能完全替代 JPEG 和 PNG，因为浏览器对 WebP 支持并不完全普及。<br>
+ 在撰写本文时，Safari 和 旧的IE 都是不支持WebP的浏览器。
+<img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="https://oss.chenjunxin.com/picture/blogPicture/93260b1f_webp_support_status.webp"
+        data-srcset="https://oss.chenjunxin.com/picture/blogPicture/93260b1f_webp_support_status.webp, https://oss.chenjunxin.com/picture/blogPicture/93260b1f_webp_support_status.webp 1.5x, https://oss.chenjunxin.com/picture/blogPicture/93260b1f_webp_support_status.webp 2x"
+        data-sizes="auto"
+        alt="https://oss.chenjunxin.com/picture/blogPicture/93260b1f_webp_support_status.webp"
+        title="https://oss.chenjunxin.com/picture/blogPicture/93260b1f_webp_support_status.webp" />
+ 根据 <a href="https://caniuse.com/#search=WebP" target="_blank" rel="noopener noreffer">caniuse.com</a> 的数据，全球有77.63%的用户使用支持WebP的浏览器。这意味着，通过使用 WebP 图像，可以为77.63% 的用户提供更快的 web 页面及更好的体验。<br>
+ 要使用它，需要下载适用于Linux，Windows和Mac OS X的预编译的实用程序。</p>
+<h1 id="linux中安装使用webp工具">Linux中安装使用WebP工具</h1>
+<h2 id="安装webp">安装WebP</h2>
+<p>Manjaro/ArchLinux系统下,直接在终端运行命令安装就可以了:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo pacaman -S libwebp
+</code></pre></td></tr></table>
+</div>
+</div><p>在Linux发行版上，首先从Google Googles存储库下载webp包，如下所示。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ wget -c https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.1.0-linux-x86-64.tar.gz
+
+或者
+
+$ curl -c https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.1.0-linux-x86-64.tar.gz
+</code></pre></td></tr></table>
+</div>
+</div><p>然后解压该文件并进入解压缩的包目录中:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ tar -xvf libwebp-1.1.0-linux-x86-64.tar.gz 
+$ <span class="nb">cd</span> libwebp-1.1.0-linux-x86-64/
+$ <span class="nb">cd</span> bin/
+$ ls
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="https://oss.chenjunxin.com/picture/blogPicture/93260b1f_webp_00.webp"
+        data-srcset="https://oss.chenjunxin.com/picture/blogPicture/93260b1f_webp_00.webp, https://oss.chenjunxin.com/picture/blogPicture/93260b1f_webp_00.webp 1.5x, https://oss.chenjunxin.com/picture/blogPicture/93260b1f_webp_00.webp 2x"
+        data-sizes="auto"
+        alt="https://oss.chenjunxin.com/picture/blogPicture/93260b1f_webp_00.webp"
+        title="https://oss.chenjunxin.com/picture/blogPicture/93260b1f_webp_00.webp" /></p>
+<p><strong>Webp软件包</strong><br>
+该软件包包含一个预编译库（ libwebp ），用于将webp编码或解码以及其他各种webp实用程序。</p>
+<ul>
+<li>anim_diff - 显示动画图像之间差异</li>
+<li>anim_dump - 转储动画图像之间差异</li>
+<li>cwebp - webp编码器</li>
+<li>dwebp - webp解码器</li>
+<li>gif2webp - 将GIF图像转换为webp</li>
+<li>img2webp - 用于将一系列图像转换为动画webp文件的工具。</li>
+<li>vwebp - webp文件查看器</li>
+<li>webpinfo - 用于查看有关webp图像文件的信息</li>
+<li>webpmux - 用于从静态的webp images创建动态的webp，或者从动态的webp提取静态的webp images</li>
+</ul>
+<h2 id="webp转换实例">WebP转换实例</h2>
+<p>将webp工具目录添加至PATH中，编辑~/.bashrc添加以下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">export PATH=$PATH:~/libwebp-1.1.0-linux-x86-64/bin
+</code></pre></td></tr></table>
+</div>
+</div><p>保存该文件并退出。 然后在终端执行<code>source ~/.bashrc</code>。</p>
+<h2 id="cwebp使用">cwebp使用</h2>
+<p>将一个图像文件压缩成一个webp文件，输入文件可以是PNG,JPEG,TIFF,WebP等等。
+语法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">cwebp [options] input_file -o output_file.webp
+</code></pre></td></tr></table>
+</div>
+</div><p>选项</p>
+<ul>
+<li>-o string
+指定输出文件名</li>
+<li>-h，-help
+简单的使用说明</li>
+<li>-H，-longhelp
+详细的使用说明</li>
+<li>-version
+版本号</li>
+<li>-lossless
+对图像进行无损编码</li>
+<li>-q float
+指定压缩因素，范围是0-100，默认为75</li>
+<li>-z int
+在0-9之间切换无损耗压缩模式，0级最快，9级最慢。快速模式产生的文件大小比较慢的文件要大。默认是6。如果-q或者-m之后被使用，-z将无效。</li>
+<li>-mt
+如果可能的话，使用多线程编码</li>
+<li>-low_memory
+减少对有损编码的内存使用。</li>
+<li>-f int
+指定过滤器的强度，范围在0(不过滤)-100(最大过滤)，值越高图像就越平滑，典型的值通常在20-50之间。</li>
+<li>-sns int
+指定空间噪声形成的振幅，范围为0(弱)-100(强)，默认为50。</li>
+<li>-progress
+报告编码进展百分比。
+例子:</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ cwebp images/flower.jpg -o images/flower.webp <span class="c1"># 转换单个文件</span>
+$ cwebp -q <span class="m">50</span> -lossless picture.png -o picture_lossless.webp <span class="c1"># 将picture.png以50的质量无损转换为webp</span>
+$ cwebp -q <span class="m">70</span> picture_with_alpha.png -o picture_with_alpha.webp
+$ cwebp -sns <span class="m">70</span> -f <span class="m">50</span> picture.png -o picture.webp
+$ <span class="k">for</span> file in ~/temp/*<span class="p">;</span> <span class="k">do</span> cwebp -lossless <span class="s2">&#34;</span><span class="nv">$file</span><span class="s2">&#34;</span> -o <span class="s2">&#34;</span><span class="si">${</span><span class="nv">file</span><span class="p">%.*</span><span class="si">}</span><span class="s2">.webp&#34;</span><span class="p">;</span><span class="k">done</span> <span class="c1"># 无损转换整个目录下的文件</span>
+
+<span class="c1"># 推荐 将quality设置为85会生成质量与PNG相当但小得多的WebP图像。对于jpeg，将quality设置为75可以在视觉和文件大小之间取得很好的平衡。</span>
+$ cwebp -q <span class="m">75</span> picture_with_alpha.jpg -o picture_with_alpha.webp
+$ cwebp -q <span class="m">85</span> picture_with_alpha.png -o picture_with_alpha.webp
+
+<span class="c1"># 使用vwebp工具查看转换后的webp图像</span>
+$ vwebp picture_lossless.webp
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>编码器，标准和高级选项<a href="https://developers.google.com/speed/webp/docs/cwebp" target="_blank" rel="noopener noreffer">文档</a></p>
+</blockquote>
+<h1 id="dwebp使用">dwebp使用</h1>
+<p>将WebP文件解压成一个图像文件，类型可以是JPG，PNG，PAM，PPM，PGM等等。
+语法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">dwebp [options] input_file.webp
+</code></pre></td></tr></table>
+</div>
+</div><p>选项</p>
+<ul>
+<li>-h
+打印用法总结。</li>
+<li>-version
+打印版本号。</li>
+<li>-o string
+指定输出文件名</li>
+<li>-bmp
+将输出格式更改为未压缩的BMP。</li>
+<li>-tiff
+将输出格式更改为未压缩的TIFF。</li>
+<li>-pam
+将输出格式更改为PAM(保留alpha)。</li>
+<li>-ppm
+将输出格式更改为PPM(丢弃alpha)。</li>
+<li>-pgm
+将输出格式更改为PGM。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ dwebp image.webp -o image.png
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>解码器，命令行选项<a href="https://developers.google.com/speed/webp/docs/dwebp" target="_blank" rel="noopener noreffer">文档</a></p>
+</blockquote>
+<h1 id="更多webp的使用">更多WebP的使用</h1>
+<p><a href="https://developers.google.com/speed/webp/docs/using">https://developers.google.com/speed/webp/docs/using</a></p>
+<h1 id="参考链接">参考链接</h1>
+<ul>
+<li><a href="https://blog.csdn.net/aa464971/article/details/77963949" target="_blank" rel="noopener noreffer">WebP官方转换工具手把手安装教程</a></li>
+<li><a href="https://www.jianshu.com/p/61ab330a6de6" target="_blank" rel="noopener noreffer">WebP - Mac上使用cwebp,dwebp,webpmux工具</a></li>
+<li><a href="https://www.howtoing.com/convert-images-to-webp-format-in-linux" target="_blank" rel="noopener noreffer">如何在Linux中将图像转换为WebP格式</a></li>
+<li><a href="https://www.soasurs.com/2019/09/10/Switching-to-WebP/" target="_blank" rel="noopener noreffer">用 WebP 作为你的首选图片文件格式</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/58419577" target="_blank" rel="noopener noreffer">Web 性能优化： 图片优化让网站大小减少 62%</a></li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-03-21 更新</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://chenjunxin.com/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" data-title="使用Google官方推荐的webp进行图片压缩" data-hashtags="图片压缩"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://chenjunxin.com/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" data-hashtag="图片压缩"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://chenjunxin.com/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" data-title="使用Google官方推荐的webp进行图片压缩" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://chenjunxin.com/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" data-title="使用Google官方推荐的webp进行图片压缩"><i class="fab fa-line fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://chenjunxin.com/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" data-title="使用Google官方推荐的webp进行图片压缩"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://chenjunxin.com/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" data-title="使用Google官方推荐的webp进行图片压缩" data-description="WebP是一种相对较新的开源图像格式，它为Google设计的网页上的图像提供了卓越的无损和有损压缩。"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://chenjunxin.com/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" data-title="使用Google官方推荐的webp进行图片压缩" data-description="WebP是一种相对较新的开源图像格式，它为Google设计的网页上的图像提供了卓越的无损和有损压缩。"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://chenjunxin.com/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" data-title="使用Google官方推荐的webp进行图片压缩"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/">图片压缩</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/md5-sha-gpg%E5%92%8Cpgp/" class="prev" rel="prev" title="MD5,SHA,GPG和PGP"><i class="fas fa-angle-left fa-fw"></i>MD5,SHA,GPG和PGP</a>
+            <a href="/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli/" class="next" rel="next" title="Nginx上部署TLS1.3和Brotli">Nginx上部署TLS1.3和Brotli<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.69.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.5"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">JohnnyChan</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">粤ICP备17106857号-2</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript">
+    window.config = {"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"headerMode":{"desktop":"fixed","mobile":"auto"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};
+</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=html5shiv%2CElement.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

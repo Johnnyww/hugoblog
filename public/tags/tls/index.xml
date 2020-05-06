@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>TLS - 标签 - </title>
+        <link>https://chenjunxin.com/tags/tls/</link>
+        <description>TLS - 标签 - </description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</managingEditor>
+            <webMaster>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</webMaster><lastBuildDate>Wed, 08 Apr 2020 17:25:32 &#43;0000</lastBuildDate><atom:link href="https://chenjunxin.com/tags/tls/" rel="self" type="application/rss+xml" /><item>
+    <title>Nginx上部署TLS1.3和Brotli</title>
+    <link>https://chenjunxin.com/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli/</link>
+    <pubDate>Wed, 08 Apr 2020 17:25:32 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://chenjunxin.com/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli/</guid>
+    <description><![CDATA[<h1 id="ssltls">SSL/TLS</h1>
+<h2 id="什么是-ssltls">什么是 SSL/TLS</h2>
+<p> 传输层安全性协议（英语：Transport Layer Security，缩写作 TLS），及其前身安全套接层（Secure Sockets Layer，缩写作 SSL）是一种安全协议，目的是为互联网通信提供安全及数据完整性保障。网景公司（Netscape）在 1994 年推出首版网页浏览器，网景导航者时，推出 HTTPS 协议，以 SSL 进行加密，这是 SSL 的起源。IETF 将 SSL 进行标准化，1999 年公布第一版 TLS 标准文件。随后又公布 RFC 5246 （2008 年 8 月）与 RFC 6176 （2011 年 3 月）。
+ 在浏览器、电子邮件、即时通信、VoIP、网络传真等应用程序中，广泛支持这个协议。主要的网站，如 Google、Facebook 等也以这个协议来创建安全连线，发送数据。当前已成为互联网上保密通信的工业标准。</p>]]></description>
+</item></channel>
+</rss>

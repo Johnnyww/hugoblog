@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>MD5,SHA,GPG和PGP - </title>
+        <meta name="Description" content="JOHHNYCHAN&#39;S HUGO BLOG"><meta property="og:title" content="MD5,SHA,GPG和PGP" />
+<meta property="og:description" content="哈希与加密的区别
+首先要了解哈希（Hash）和加密（Encrypt）的区别，正确区别两者是正确选择和使用哈希与加密的基础。
+概括来说，哈希（Hash）是将目标文本转换成具有相同长度的、不可逆的杂凑字符串（或叫做消息摘要），而加密（Encrypt）是将目标文本转换成具有不同长度的、可逆的密文。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://chenjunxin.com/md5-sha-gpg%E5%92%8Cpgp/" />
+<meta property="article:published_time" content="2020-03-03T11:50:04+00:00" />
+<meta property="article:modified_time" content="2020-03-03T11:50:04+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MD5,SHA,GPG和PGP"/>
+<meta name="twitter:description" content="哈希与加密的区别
+首先要了解哈希（Hash）和加密（Encrypt）的区别，正确区别两者是正确选择和使用哈希与加密的基础。
+概括来说，哈希（Hash）是将目标文本转换成具有相同长度的、不可逆的杂凑字符串（或叫做消息摘要），而加密（Encrypt）是将目标文本转换成具有不同长度的、可逆的密文。"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://chenjunxin.com/md5-sha-gpg%E5%92%8Cpgp/" /><link rel="prev" href="https://chenjunxin.com/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95/" /><link rel="next" href="https://chenjunxin.com/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><meta name="google-site-verification" content="SEgZDIT-0OdxnPgHgsC3fOvdOF7O4zxgMnV25A4601U" /><meta name="baidu-site-verification" content="c694f10d0cd3c87d69a8be39bb4e7a46" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "MD5,SHA,GPG和PGP",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/chenjunxin.com\/md5-sha-gpg%E5%92%8Cpgp\/"
+        },"image": {
+                "@type": "ImageObject",
+                "url": "https:\/\/chenjunxin.com\/cover.png",
+                "width":  800 ,
+                "height":  600 
+            },"genre": "posts","keywords": "MD5, SHA, PGP, GPG","wordcount":  4241 ,
+        "url": "https:\/\/chenjunxin.com\/md5-sha-gpg%E5%92%8Cpgp\/","datePublished": "2020-03-03T11:50:04+00:00","dateModified": "2020-03-03T11:50:04+00:00","publisher": {
+                "@type": "Organization",
+                "name": "JohnnyChan",
+                "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/chenjunxin.com\/logo.png",
+                "width":  127 ,
+                "height":  40 
+                }
+            },"author": {
+                "@type": "Person",
+                "name": "JohnnyChan"
+            },"description": ""
+    }
+    </script></head>
+    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title=""></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title=""></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">MD5,SHA,GPG和PGP</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>JohnnyChan</a></span>&nbsp;
+                    <span class="post-category">收录于<a href="/categories/%E6%8A%80%E6%9C%AF/">
+                                <i class="far fa-folder fa-fw"></i>技术
+                            </a>&nbsp;<a href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">
+                                <i class="far fa-folder fa-fw"></i>密码学
+                            </a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-03-03>2020-03-03</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 4241 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 9 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#sha算法家族哈希值大小及输出长度">SHA算法家族哈希值大小及输出长度:</a></li>
+    <li><a href="#sha1与md5算法比较">SHA1与MD5算法比较</a></li>
+    <li><a href="#md5sha实际应用">MD5,SHA实际应用</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#什么是pgp">什么是PGP</a></li>
+    <li><a href="#什么是gpg">什么是GPG</a></li>
+    <li><a href="#gpg实际应用">GPG实际应用</a>
+      <ul>
+        <li><a href="#常规操作">常规操作</a>
+          <ul>
+            <li><a href="#生成密钥">生成密钥</a></li>
+            <li><a href="#列出密钥">列出密钥</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="哈希与加密的区别">哈希与加密的区别</h1>
+<p>首先要了解哈希（Hash）和加密（Encrypt）的区别，正确区别两者是正确选择和使用哈希与加密的基础。
+概括来说，哈希（Hash）是将目标文本转换成具有相同长度的、不可逆的杂凑字符串（或叫做消息摘要），而加密（Encrypt）是将目标文本转换成具有不同长度的、可逆的密文。</p>
+<p>具体来说，两者有如下重要区别：</p>
+<ol>
+<li><strong>哈希算法往往被设计成生成具有相同长度的文本，而加密算法生成的文本长度与明文本身的长度有关</strong>。
+例如，设我们有两段文本：“Microsoft”和“Google”。两者使用某种哈希算法得到的结果分别为：“140864078AECA1C7C35B4BEB33C53C34”和“8B36E9207C24C76E6719268E49201D94”，而使用某种加密算法的到的结果分别为“Njdsptpgu”和“Hpphmf”。可以看到，哈希的结果具有相同的长度，而加密的结果则长度不同。实际上，如果使用相同的哈希算法，不论你的输入有多么长，得到的结果长度是一个常数，而加密算法往往与明文的长度成正比。</li>
+<li><strong>哈希算法是不可逆的，而加密算法是可逆的</strong>。
+这里的不可逆有两层含义，一是“给定一个哈希结果R，没有方法将E转换成原目标文本S”，二是“给定哈希结果R，即使知道一段文本S的哈希结果为R，也不能断言当初的目标文本就是S”。其实稍微想想就知道，哈希是不可能可逆的，因为如果可逆，那么哈希就是世界上最强悍的压缩方式了——能将任意大小的文件压缩成固定大小。
+加密则不同，给定加密后的密文R，存在一种方法可以将R确定的转换为加密前的明文S。</li>
+</ol>
+<h1 id="哈希与加密的数学基础">哈希与加密的数学基础</h1>
+<p>从数学角度讲，哈希和加密都是一个映射。下面正式定义两者：</p>
+<ul>
+<li>
+<p>一个哈希算法$R=H(S)$是一个多对一映射，给定目标文本S，H可以将其唯一映射为R，并且对于所有S，R具有相同的长度。由于是多对一映射，所以H不存在逆映射$S=H^{-1}(R)$使得R转换为唯一的S。</p>
+</li>
+<li>
+<p>一个加密算法$R=E(S,K_E)$是一个一一映射，其中第二个参数叫做加密密钥，E可以将给定的明文S结合加密密钥Ke唯一映射为密文R，并且存在另一个一一映射$S=D(R,K_D)$，可以结合Kd将密文R唯一映射为对应明文S，其中Kd叫做解密密钥。</p>
+</li>
+</ul>
+<p>由于哈希算法的定义域是一个无限集合，而值域是一个有限集合，将无限集合映射到有限集合，每个哈希结果都存在无数个可能的目标文本，因此哈希不是一一映射，是不可逆的。 而加密算法是一一映射，因此理论上来说是可逆的。</p>
+<h1 id="哈希算法摘要算法">哈希算法(摘要算法)</h1>
+<p>常见的Hash算法有MD5(Message-Digest Algorithm)和SHA(Secure Hash Algorithm)。SHA又包括 SHA-1 和 SHA-2(SHA-224、SHA-256、SHA-384、SHA-512) 和SHA-3。</p>
+<ul>
+<li>MD5是输入不定长度信息，输出固定长度128-bits的算法。经过程序流程，生成四个32位数据，最后联合起来成为一个128-bits散列。基本方式为，求余、取余、调整长度、与链接变量进行循环运算，得出结果。</li>
+<li>SHA-1在许多安全协议中广为使用，包括TLS和SSL、PGP、SSH、S/MIME和IPsec，曾被视为是MD5（更早之前被广为使用的散列函数）的后继者。</li>
+<li>SHA-2它的算法跟SHA-1基本上仍然相似；因此有些人开始发展其他替代的散列算法。</li>
+<li>由于对MD5出现成功的破解，以及对SHA-1和SHA-2出现理论上破解的方法，NIST感觉需要一个与之前算法不同的，可替换的加密杂凑算法，也就是现在的SHA-3。</li>
+</ul>
+<h2 id="sha算法家族哈希值大小及输出长度">SHA算法家族哈希值大小及输出长度:</h2>
+<ul>
+<li>SHA-1算法的哈希值大小为160位，其计算输出长度为40位16进制字符串。</li>
+<li>SHA-224算法的哈希值大小为224位，其计算输出长度为56位16进制字符串。</li>
+<li>SHA-256算法的哈希值大小为256位，其计算输出长度为64位16进制字符串。</li>
+<li>SHA-384算法的哈希值大小为384位，其计算输出长度为96位16进制字符串。</li>
+<li>SHA-512算法的哈希值大小为512位，其计算输出长度为128位16进制字符串。</li>
+</ul>
+<h2 id="sha1与md5算法比较">SHA1与MD5算法比较</h2>
+<p>SHA1和MD5做为两种单向散列算法，二者均由MD4算法延伸导出，它们的强度及相关特性也非常相似。两者的区别主要体现以下几点：</p>
+<ol>
+<li>SHA1防碰撞性更好：两者最主要的区别还在于SHA1要比MD5摘要要长 32位。单从强行攻击角度来说，要破结一个MD5哈希摘要报文，其需要操作的数量级为$2^{128}$。而对于SHA1哈希摘要报文，其所需的数量级为$2^{160}$。从这方面来说，SHA1具有更好的抗强行攻击安全性。</li>
+<li>MD5运算速度更快：由于MD5比SHA1更短，在相同的硬件上，计算MD5哈希摘要要 比计算SHA1哈希摘要速度更快。</li>
+<li>SHA1相对安全：SHA1MD5，而MD5在设计方面也易受密码分析的攻击，理论上讲SHA1的安全性要高于MD5。</li>
+</ol>
+<h2 id="md5sha实际应用">MD5,SHA实际应用</h2>
+<ol>
+<li>Git的分支版本号管理就是用了SHA-1根据内容改变生成一串消息摘要。
+使用git中的hash命令也可以查看指定文件的sha-1值:</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ git hash-object  README.md
+a13c2dba7f888de53aa3e84e69e8a131109bbfc8
+</code></pre></td></tr></table>
+</div>
+</div><p>那么Git是否考虑到SHA1碰撞的问题，可以看<a href="https://www.zhihu.com/question/23789956/answer/148204243" target="_blank" rel="noopener noreffer">这里</a></p>
+<ol start="2">
+<li>
+<p>Docker中经常使用的生成各种UUID的是SHA-256算法，例如镜像层ImageID,容器ID。所有镜像层和容器层都保存在宿主机的文件系统/var/lib/docker/中，由存储驱动进行管理。</p>
+</li>
+<li>
+<p>Linux下校验下载文件的完整性(MD5,SHA256)</p>
+</li>
+</ol>
+<ul>
+<li>MD5校验</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#直接输出MD5 Hash</span>
+$ md5sum your-downloaded-file-name
+fd4a1b802373c57c10c926eb7ac823d8  your-downloaded-file-name
+<span class="c1">#当前目录下所有文件生成MD5 Hash</span>
+$ md5sum * <span class="p">|</span> tee hi.md5
+<span class="c1">#将MD5 Hash值保存到md5-hash.txt文件中.</span>
+$ md5sum your-downloaded-file-name &gt; md5-hash.txt
+<span class="c1"># 显示输出的md5-hast.txt内容</span>
+$ cat md5-hash.txt
+fd4a1b802373c57c10c926eb7ac823d8  your-downloaded-file-name
+<span class="c1"># 通过md5-hash.txt来校验你下载的文件是否正确</span>
+$ md5sum -c md5-hash.txt
+your-downloaded-file-name: OK
+</code></pre></td></tr></table>
+</div>
+</div><p>你是文件的发布者话，你可以通过md5sum把文件的哈希值发送给验证者，这样下载你文件的人就可以通过MD5哈希值来验证你的文件正确性。反过来，我们在网站上下载文件之后，同时可以获取发布者的MD5哈希值和本地生成的Hash值对比，如果一致，认为文件是正确的。</p>
+<ul>
+<li>SHA265校验
+原理： 原理同MD5一样，都是通过对文件进行HASH求值，比对文件发布者发布的HASH值，通过是否相等判断文件是否被篡改。
+sha256sum 命令 和 md5sum 命令一样的功能，只是使用算法不同，sha256相对 md5sum 更为准确，所以现在很多的系统的发行版都是使用 sha256sum 进行校验！实际例子：<a href="https://www.kali.org/downloads/" target="_blank" rel="noopener noreffer">Kali Linux</a></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ sha256sum kali-linux-light-2018.2-amd64.iso 
+554f020b0c89d5978928d31b8635a7eeddf0a3900abcacdbc39616f80d247f86  kali-linux-light-2018.2-amd64.iso
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="对称加密和非对称加密">对称加密和非对称加密</h1>
+<p><strong>对称加密</strong>：指的就是加、解密使用的同是一串密钥，所以被称做对称加密。对称加密只有一个密钥作为私钥。 常见的对称加密算法：DES、3DES、DESX、Blowfish、IDEA、RC4、RC5、RC6 和 AES等。</p>
+<p><strong>非对称加密</strong>：指的是加、解密使用不同的密钥，一把作为公开的公钥，另一把作为私钥。公钥加密的信息，只有私钥才能解密。反之，私钥加密的信息，只有公钥才能解密。 举个例子，你向某公司服务器请求公钥，服务器将公钥发给你，你使用公钥对消息加密，那么只有私钥的持有人才能对你的消息解密。与对称加密不同的是，公司服务器不需要将私钥通过网络发送出去，因此安全性大大提高。最常用的非对称加密算法：RSA、ECC （移动设备用）、Diffie-Hellman、El Gamal、DSA （数字签名用）</p>
+<p><strong>对称加密优缺点</strong>：对称加密相比非对称加密算法来说，加解密的效率要高得多、加密速度快。但是缺陷在于对于密钥的管理和分发上比较困难，不是非常安全，密钥管理负担很重。
+<strong>非对称加密优缺点</strong>：安全性更高，公钥是公开的，密钥是自己保存的，不需要将私钥给别人。缺点：加密和解密花费时间长、速度慢，只适合对少量数据进行加密。</p>
+<p><strong>总结</strong>：安全肯定是非对称加密安全，但是效率比较慢，对称加密效率高，但是不安全。严谨一点的做法是混合起来使用，将对称加密的密钥使用非对称加密的公钥进行加密，然后发送出去，接收方使用私钥进行解密得到对称加密的密钥，然后双方可以使用对称加密来进行沟通。实际工作中直接使用非对称加、解密其实也可以，因为我们平时一般请求的报文不会很大，加解密起来速度在可接受范围内，或者可以对敏感字段，比如密码、手机号、身份证号等进行分段加密，效率还可以。</p>
+<h1 id="pgp和gpg">PGP和GPG</h1>
+<h2 id="什么是pgp">什么是PGP</h2>
+<p>PGP（Pretty Good Privacy）是一套用于讯息加密、验证的应用程序，采用IDEA的散列算法作为加密和验证之用。
+PGP加密由一系列散列、数据压缩、对称密钥加密，以及公钥加密的算法组合而成。每个步骤均支持几种算法，用户可以选择一个使用。每个公钥均绑定一个用户名和/或者E-mail地址。
+PGP的主要开发者是菲尔·齐默曼（Phil Zimmermann）。齐默曼于1991年将PGP在互联网上免费发布。PGP本身是商业应用程序；开源并具有同类功能的工具名为GnuPG（GPG）。PGP及其同类产品均遵守OpenPGP数据加解密标准。</p>
+<h2 id="什么是gpg">什么是GPG</h2>
+<p>GnuPG（GNU Privacy Guard，GPG）是一种加密软件，它是PGP加密软件的开源替代物。GnuPG依照由IETF制定的OpenPGP技术标准设计。GnuPG是用于加密、数字签章及产生非对称匙对的软件。GPG 兼容 PGP（Pretty Good Privacy）的功能。</p>
+<h2 id="gpg实际应用">GPG实际应用</h2>
+<p>尽管MD5,SHA等哈希函数就可以用于日常校验安装包是否被改变过，但是还是有一定的可能性发生修改后的数据包哈希结果的值还是和之前相同，而且也无法证明这个包就是特定的某个人或者特定的官方机构发出来的。所以用到了GPG来进一步签名认证。
+Github 使用 GPG 签名验证一般Linux发行版都包含GPG软件包，可以通过发行版的包管理器来安装（一般发行版都会默认安装，因为这个软件太重要了）。使用下面的命令确认当前系统是否安装了GPG</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ gpg --version
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="常规操作">常规操作</h3>
+<h4 id="生成密钥">生成密钥</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">## 生成新的密钥对</span>
+$ gpg --gen-key 
+$ gpg --generate-key 
+<span class="c1">## 以全功能形式生成新的密钥对（期间会有一些密钥的配置）</span>
+$ gpg --full-generate-key
+$ gpg --full-gen-key  
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="列出密钥">列出密钥</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#列出公钥</span>
+$ gpg --list-keys
+$ gpg --list-key <span class="o">[</span>用户ID<span class="o">]</span>
+<span class="c1">#列出私钥</span>
+$ gpg --list-secret-keys 
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="参考链接">参考链接</h1>
+<ul>
+<li><a href="https://www.cnblogs.com/leoo2sk/archive/2010/10/01/hash-and-encrypt.html" target="_blank" rel="noopener noreffer">哈希(Hash)与加密(Encrypt)的基本原理、区别及工程应用</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/37165658" target="_blank" rel="noopener noreffer">哈希算法与MD5、SHA</a></li>
+<li><a href="https://www.cnblogs.com/xuyaowen/p/md5sum_sha256_usages.html" target="_blank" rel="noopener noreffer">md5sum 和 sha256sum用于 验证软件完整性</a></li>
+<li><a href="http://blog.useasp.net/archive/2014/03/29/use-md5-sha1-or-pgp-to-check-downloaded-file-integrity-on-linux.aspx" target="_blank" rel="noopener noreffer">Linux下校验下载文件的完整性(MD5,SHA1,PGP)</a></li>
+<li><a href="https://juejin.im/post/5abb6c8651882555784e051d" target="_blank" rel="noopener noreffer">对称加密、非对称加密、RSA(总结)</a></li>
+<li><a href="https://rekols.github.io/2019/08-03/github-using-gpg/" target="_blank" rel="noopener noreffer">Github 使用 GPG 签名验证</a></li>
+<li><a href="https://www.bitlogs.tech/2019/01/gpg%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" target="_blank" rel="noopener noreffer">GPG使用教程</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/29575509" target="_blank" rel="noopener noreffer">GPG 与端到端加密：论什么才是可以信任的</a></li>
+</ul></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-03-03 更新</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/md5-sha-gpg%E5%92%8Cpgp/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://chenjunxin.com/md5-sha-gpg%E5%92%8Cpgp/" data-title="MD5,SHA,GPG和PGP" data-hashtags="MD5,SHA,PGP,GPG"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://chenjunxin.com/md5-sha-gpg%E5%92%8Cpgp/" data-hashtag="MD5"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://chenjunxin.com/md5-sha-gpg%E5%92%8Cpgp/" data-title="MD5,SHA,GPG和PGP" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://chenjunxin.com/md5-sha-gpg%E5%92%8Cpgp/" data-title="MD5,SHA,GPG和PGP"><i class="fab fa-line fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://chenjunxin.com/md5-sha-gpg%E5%92%8Cpgp/" data-title="MD5,SHA,GPG和PGP"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://chenjunxin.com/md5-sha-gpg%E5%92%8Cpgp/" data-title="MD5,SHA,GPG和PGP" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://chenjunxin.com/md5-sha-gpg%E5%92%8Cpgp/" data-title="MD5,SHA,GPG和PGP" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://chenjunxin.com/md5-sha-gpg%E5%92%8Cpgp/" data-title="MD5,SHA,GPG和PGP"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/md5/">MD5</a>,&nbsp;<a href="/tags/sha/">SHA</a>,&nbsp;<a href="/tags/pgp/">PGP</a>,&nbsp;<a href="/tags/gpg/">GPG</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95/" class="prev" rel="prev" title="博客优化记录"><i class="fas fa-angle-left fa-fw"></i>博客优化记录</a>
+            <a href="/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" class="next" rel="next" title="使用Google官方推荐的webp进行图片压缩">使用Google官方推荐的webp进行图片压缩<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.69.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.5"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">JohnnyChan</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">粤ICP备17106857号-2</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript">
+    window.config = {"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"headerMode":{"desktop":"fixed","mobile":"auto"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};
+</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=html5shiv%2CElement.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>科学上网 - 分类 - </title>
+        <link>https://chenjunxin.com/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</link>
+        <description>科学上网 - 分类 - </description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</managingEditor>
+            <webMaster>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</webMaster><lastBuildDate>Sun, 01 Mar 2020 14:29:18 &#43;0000</lastBuildDate><atom:link href="https://chenjunxin.com/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="self" type="application/rss+xml" /><item>
+    <title>CentOS7上Docker部署V2Ray</title>
+    <link>https://chenjunxin.com/centos7%E4%B8%8Adocker%E9%83%A8%E7%BD%B2v2ray/</link>
+    <pubDate>Sun, 01 Mar 2020 14:29:18 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://chenjunxin.com/centos7%E4%B8%8Adocker%E9%83%A8%E7%BD%B2v2ray/</guid>
+    <description><![CDATA[<p>因为之前用的<a href="https://www.vultr.com/" target="_blank" rel="noopener noreffer">Vultr</a>的VPS网络经常不太稳定，昨天换了<a href="https://www.hostwinds.com/" target="_blank" rel="noopener noreffer">HostWinds</a>家的VPS,所以要从头配置起V2Ray,顺便记录一下，方便日后再换VPS用。</p>]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Nginx上部署TLS1.3和Brotli - </title>
+        <meta name="Description" content="JOHHNYCHAN&#39;S HUGO BLOG"><meta property="og:title" content="Nginx上部署TLS1.3和Brotli" />
+<meta property="og:description" content="SSL/TLS
+什么是 SSL/TLS
+ 传输层安全性协议（英语：Transport Layer Security，缩写作 TLS），及其前身安全套接层（Secure Sockets Layer，缩写作 SSL）是一种安全协议，目的是为互联网通信提供安全及数据完整性保障。网景公司（Netscape）在 1994 年推出首版网页浏览器，网景导航者时，推出 HTTPS 协议，以 SSL 进行加密，这是 SSL 的起源。IETF 将 SSL 进行标准化，1999 年公布第一版 TLS 标准文件。随后又公布 RFC 5246 （2008 年 8 月）与 RFC 6176 （2011 年 3 月）。
+ 在浏览器、电子邮件、即时通信、VoIP、网络传真等应用程序中，广泛支持这个协议。主要的网站，如 Google、Facebook 等也以这个协议来创建安全连线，发送数据。当前已成为互联网上保密通信的工业标准。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://chenjunxin.com/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli/" />
+<meta property="article:published_time" content="2020-04-08T17:25:32+00:00" />
+<meta property="article:modified_time" content="2020-04-08T17:25:32+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Nginx上部署TLS1.3和Brotli"/>
+<meta name="twitter:description" content="SSL/TLS
+什么是 SSL/TLS
+ 传输层安全性协议（英语：Transport Layer Security，缩写作 TLS），及其前身安全套接层（Secure Sockets Layer，缩写作 SSL）是一种安全协议，目的是为互联网通信提供安全及数据完整性保障。网景公司（Netscape）在 1994 年推出首版网页浏览器，网景导航者时，推出 HTTPS 协议，以 SSL 进行加密，这是 SSL 的起源。IETF 将 SSL 进行标准化，1999 年公布第一版 TLS 标准文件。随后又公布 RFC 5246 （2008 年 8 月）与 RFC 6176 （2011 年 3 月）。
+ 在浏览器、电子邮件、即时通信、VoIP、网络传真等应用程序中，广泛支持这个协议。主要的网站，如 Google、Facebook 等也以这个协议来创建安全连线，发送数据。当前已成为互联网上保密通信的工业标准。"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://chenjunxin.com/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli/" /><link rel="prev" href="https://chenjunxin.com/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" /><link rel="next" href="https://chenjunxin.com/docker%E8%B8%A9%E5%9D%91%E5%90%8E%E7%9A%84%E6%80%BB%E7%BB%93/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><meta name="google-site-verification" content="SEgZDIT-0OdxnPgHgsC3fOvdOF7O4zxgMnV25A4601U" /><meta name="baidu-site-verification" content="c694f10d0cd3c87d69a8be39bb4e7a46" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Nginx上部署TLS1.3和Brotli",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/chenjunxin.com\/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli\/"
+        },"image": {
+                "@type": "ImageObject",
+                "url": "https:\/\/chenjunxin.com\/cover.png",
+                "width":  800 ,
+                "height":  600 
+            },"genre": "posts","keywords": "Nginx, TLS, Brotil","wordcount":  3225 ,
+        "url": "https:\/\/chenjunxin.com\/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli\/","datePublished": "2020-04-08T17:25:32+00:00","dateModified": "2020-04-08T17:25:32+00:00","publisher": {
+                "@type": "Organization",
+                "name": "JohnnyChan",
+                "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/chenjunxin.com\/logo.png",
+                "width":  127 ,
+                "height":  40 
+                }
+            },"author": {
+                "@type": "Person",
+                "name": "JohnnyChan"
+            },"description": ""
+    }
+    </script></head>
+    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title=""></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title=""></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Nginx上部署TLS1.3和Brotli</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>JohnnyChan</a></span>&nbsp;
+                    <span class="post-category">收录于<a href="/categories/%E6%8A%80%E6%9C%AF/">
+                                <i class="far fa-folder fa-fw"></i>技术
+                            </a>&nbsp;<a href="/categories/nginx/">
+                                <i class="far fa-folder fa-fw"></i>Nginx
+                            </a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-04-08>2020-04-08</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 3225 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 7 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#什么是-ssltls">什么是 SSL/TLS</a></li>
+    <li><a href="#ssltls-的版本">SSL/TLS 的版本</a></li>
+    <li><a href="#为什么要禁用-tls10tls11">为什么要禁用 TLS1.0、TLS1.1</a></li>
+    <li><a href="#tls-13">TLS 1.3</a>
+      <ul>
+        <li><a href="#tls-13-相较之前版本的优化内容有">TLS 1.3 相较之前版本的优化内容有：</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#下载源码">下载源码</a></li>
+    <li><a href="#编译以及安装">编译以及安装</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#oscp">OSCP</a></li>
+    <li><a href="#http2">HTTP/2</a></li>
+    <li><a href="#tls-13-1">TLS 1.3</a></li>
+    <li><a href="#hsts">HSTS</a></li>
+    <li><a href="#brotli-1">Brotli</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="ssltls">SSL/TLS</h1>
+<h2 id="什么是-ssltls">什么是 SSL/TLS</h2>
+<p> 传输层安全性协议（英语：Transport Layer Security，缩写作 TLS），及其前身安全套接层（Secure Sockets Layer，缩写作 SSL）是一种安全协议，目的是为互联网通信提供安全及数据完整性保障。网景公司（Netscape）在 1994 年推出首版网页浏览器，网景导航者时，推出 HTTPS 协议，以 SSL 进行加密，这是 SSL 的起源。IETF 将 SSL 进行标准化，1999 年公布第一版 TLS 标准文件。随后又公布 RFC 5246 （2008 年 8 月）与 RFC 6176 （2011 年 3 月）。
+ 在浏览器、电子邮件、即时通信、VoIP、网络传真等应用程序中，广泛支持这个协议。主要的网站，如 Google、Facebook 等也以这个协议来创建安全连线，发送数据。当前已成为互联网上保密通信的工业标准。</p>
+<h2 id="ssltls-的版本">SSL/TLS 的版本</h2>
+<table>
+<thead>
+<tr>
+<th align="center">协议</th>
+<th align="center">发布时间</th>
+<th align="center">状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">SSL 1.0</td>
+<td align="center">未公布</td>
+<td align="center">未公布</td>
+</tr>
+<tr>
+<td align="center">SSL 2.0</td>
+<td align="center">1995 年</td>
+<td align="center">已于 2011 年弃用</td>
+</tr>
+<tr>
+<td align="center">SSL 3.0</td>
+<td align="center">1996 年</td>
+<td align="center">已于 2015 年弃用</td>
+</tr>
+<tr>
+<td align="center">TLS 1.0</td>
+<td align="center">1999 年</td>
+<td align="center">计划于 2020 年弃用</td>
+</tr>
+<tr>
+<td align="center">TLS 1.1</td>
+<td align="center">2006 年</td>
+<td align="center">计划于 2020 年弃用</td>
+</tr>
+<tr>
+<td align="center">TLS 1.2</td>
+<td align="center">2008 年</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">TLS 1.3</td>
+<td align="center">2018 年</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="为什么要禁用-tls10tls11">为什么要禁用 TLS1.0、TLS1.1</h2>
+<p> SSL 由于以往发现的漏洞，已经被证实不安全。而 TLS1.0 与 SSL3.0 的区别实际上并不太多，并且 TLS1.0 可以通过某些方式被强制降级为 SSL3.0。
+ 由此，支付卡行业安全标准委员会（PCI SSC）强制取消了支付卡行业对 TLS 1.0 的支持，同时强烈建议取消对 TLS 1.1 的支持。
+ 苹果、谷歌、微软、Mozilla 也发表了声明，将于 2020 年初放弃对 TLS 1.1 和 TLS 1.0 的支持。其原因是这两个版本使用的是过时的算法和加密系统，经发现，这些算法和系统是十分脆弱的，比如 SHA-1 和 MD5。它们也缺乏像完美的前向保密性这样的现代特征，并且容易受到降级攻击的影响。</p>
+<h2 id="tls-13">TLS 1.3</h2>
+<p>在2018年8月份，IETF终于宣布TLS 1.3规范正式发布了，标准规范（Standards Track）定义在 <a href="https://tools.ietf.org/html/rfc8446" target="_blank" rel="noopener noreffer">rfc8446</a>。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_TLS1.2_Principle.webp"
+        data-srcset="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_TLS1.2_Principle.webp, https://oss.chenjunxin.com/picture/blogPicture/9f670eb_TLS1.2_Principle.webp 1.5x, https://oss.chenjunxin.com/picture/blogPicture/9f670eb_TLS1.2_Principle.webp 2x"
+        data-sizes="auto"
+        alt="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_TLS1.2_Principle.webp"
+        title="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_TLS1.2_Principle.webp" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_TLS1.3_Principle.webp"
+        data-srcset="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_TLS1.3_Principle.webp, https://oss.chenjunxin.com/picture/blogPicture/9f670eb_TLS1.3_Principle.webp 1.5x, https://oss.chenjunxin.com/picture/blogPicture/9f670eb_TLS1.3_Principle.webp 2x"
+        data-sizes="auto"
+        alt="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_TLS1.3_Principle.webp"
+        title="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_TLS1.3_Principle.webp" /></p>
+<h3 id="tls-13-相较之前版本的优化内容有">TLS 1.3 相较之前版本的优化内容有：</h3>
+<ul>
+<li>**握手时间：**同等情况下，TLSv1.3 比 TLSv1.2 少一个 RTT</li>
+<li>**应用数据：**在会话复用场景下，支持 0-RTT 发送应用数据</li>
+<li>**握手消息：**从 ServerHello 之后都是密文。</li>
+<li>**会话复用机制：**弃用了 Session ID 方式的会话复用，采用 PSK 机制的会话复用。</li>
+</ul>
+<p>总结一下就是在更安全的基础上还做到了更快，目前 TLS 1.3 的重要实现是 OpenSSL 1.1.1 开始支持了，在 Nginx 上的实现需要 Nginx 1.13+。</p>
+<h1 id="brotli">Brotli</h1>
+<p> Brotli 是由 Google 于 2015 年 9 月推出的无损压缩算法，它通过用变种的 LZ77 算法，Huffman 编码和二阶文本建模进行数据压缩，是一种压缩比很高的压缩方法，现代网站大多用的压缩算法都是 GZIP，它也是非常有效的一种压缩算法，可以节省网站服务器和用户之间传输数据所需要花费的时间，但是这个 Brotli，据闻能比 gzip 做得更好，不仅能获得更高的压缩比率，而且对压缩/解压速度影响也比较小，可以去谷歌的 GitHub 了解一下<a href="https://github.com/google/brotli" target="_blank" rel="noopener noreffer">该项目</a></p>
+<p>Brotli 具有如下特点:</p>
+<ul>
+<li>针对常见的 Web 资源内容，Brotli 的性能要比 GZIP 好 17-25%；</li>
+<li>Brotli 压缩级别为 1 时，压缩速度是最快的，而且此时压缩率比 gzip 压缩等级为 9（最高）时还要高；</li>
+<li>在处理不同 HTML 文档时，brotli 依然提供了非常高的压缩率;</li>
+</ul>
+<p>在兼容 GZIP 的同时，相较 GZIP:</p>
+<ul>
+<li>JavaScript 上缩小 14%</li>
+<li>HTML上缩小 21%</li>
+<li>CSS上缩小 17%</li>
+</ul>
+<p> Brotli 的支持必须依赖 HTTPS，不过换句话说就是只有在 HTTPS 下才能实现 Brotli。Brotli压缩可以和GZIP和谐共存，而且Brotli压缩效率要高于GZIP，因此推荐给服务器编译配置Brotli压缩。当同时开启Brotli跟GZIP两种压缩算法时，Brotli压缩等级优先级高于GZIP，并不会造成冲突。</p>
+<h1 id="安装">安装</h1>
+<h2 id="下载源码">下载源码</h2>
+<p>HTTP/2 要求 Nginx 1.9.5+，OpenSSL 1.0.2+<br>
+TLS 1.3 要求 Nginx 1.13+，OpenSSL 1.1.1及之后的版本+<br>
+Brotli 要求 HTTPS，并在 Nginx 中添加扩展支持<br>
+建议去官网随时关注最新版：<a href="https://nginx.org/en/download.html" target="_blank" rel="noopener noreffer">Nginx</a>，<a href="https://www.openssl.org/source/" target="_blank" rel="noopener noreffer">OpenSSL</a>，<a href="https://github.com/google/ngx_brotli" target="_blank" rel="noopener noreffer">ngx_brotil</a></p>
+<p><strong>Nginx</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> /opt
+$ wget -c https://nginx.org/download/nginx-1.16.1.tar.gz
+$ tar xzf nginx-1.16.1.tar.gz
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>OpenSSL</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 可以先查看已安装OpenSSL版本</span>
+$ openssl version -a
+OpenSSL 1.1.1d  <span class="m">10</span> Sep <span class="m">2019</span>
+built on: Sun Mar  <span class="m">8</span> 08:45:14 <span class="m">2020</span> UTC
+platform: linux-x86_64
+options:  bn<span class="o">(</span>64,64<span class="o">)</span> rc4<span class="o">(</span>16x,int<span class="o">)</span> des<span class="o">(</span>int<span class="o">)</span> idea<span class="o">(</span>int<span class="o">)</span> blowfish<span class="o">(</span>ptr<span class="o">)</span> 
+compiler: gcc -fPIC -pthread -m64 -Wa,--noexecstack -Wall -O3 -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DNDEBUG
+OPENSSLDIR: <span class="s2">&#34;/usr/local/openssl/ssl&#34;</span>
+ENGINESDIR: <span class="s2">&#34;/usr/local/openssl/lib/engines-1.1&#34;</span>
+Seeding source: os-specific
+
+<span class="c1"># 开始下载新版本</span>
+$ <span class="nb">cd</span> /opt
+$ wget https://www.openssl.org/source/openssl-1.1.1f.tar.gz
+$ tar xzf openssl-1.1.1f.tar.gz
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>Brotli</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> /opt
+$ git clone https://github.com/google/ngx_brotli.git
+$ <span class="nb">cd</span> ngx_brotli
+$ git submodule update --init
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="编译以及安装">编译以及安装</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ nginx -V
+</code></pre></td></tr></table>
+</div>
+</div><p>先用使用以上命令查询出已有nginx有安装的模块以及配置的路径，之后再原有的基础上增加</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">--prefix=/usr/local/nginx \  ## 编译后安装的目录位置，可以替换成跟原来一样
+--with-openssl=/opt/openssl-1.1.1f  \ ## 指定单独编译入 OpenSSL 的源码位置
+--with-openssl-opt=enable-tls1_3 \ ## 开启 TLS 1.3 支持
+--with-http_v2_module \ ## 开启 HTTP/2 
+--with-http_ssl_module \ ## 开启 HTTPS 支持
+--with-http_gzip_static_module \ ## 开启 GZIP 压缩
+--add-module=/opt/ngx_brotli ## 编译入 ngx_BroTli 扩展
+</code></pre></td></tr></table>
+</div>
+</div><p>综合两者，最后编译Nginx</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> /opt/nginx-1.16.1
+
+$ ./configure <span class="se">\
+</span><span class="se"></span>--prefix<span class="o">=</span>/etc/nginx <span class="se">\
+</span><span class="se"></span>--sbin-path<span class="o">=</span>/usr/sbin/nginx <span class="se">\
+</span><span class="se"></span>--modules-path<span class="o">=</span>/usr/lib64/nginx/modules <span class="se">\
+</span><span class="se"></span>--conf-path<span class="o">=</span>/etc/nginx/nginx.conf <span class="se">\
+</span><span class="se"></span>--error-log-path<span class="o">=</span>/var/log/nginx/error.log <span class="se">\
+</span><span class="se"></span>--http-log-path<span class="o">=</span>/var/log/nginx/access.log <span class="se">\
+</span><span class="se"></span>--pid-path<span class="o">=</span>/var/run/nginx.pid <span class="se">\
+</span><span class="se"></span>--lock-path<span class="o">=</span>/var/run/nginx.lock <span class="se">\
+</span><span class="se"></span>--http-client-body-temp-path<span class="o">=</span>/var/cache/nginx/client_temp <span class="se">\
+</span><span class="se"></span>--http-proxy-temp-path<span class="o">=</span>/var/cache/nginx/proxy_temp <span class="se">\
+</span><span class="se"></span>--http-fastcgi-temp-path<span class="o">=</span>/var/cache/nginx/fastcgi_temp <span class="se">\
+</span><span class="se"></span>--http-uwsgi-temp-path<span class="o">=</span>/var/cache/nginx/uwsgi_temp <span class="se">\
+</span><span class="se"></span>--http-scgi-temp-path<span class="o">=</span>/var/cache/nginx/scgi_temp <span class="se">\
+</span><span class="se"></span>--user<span class="o">=</span>nginx <span class="se">\
+</span><span class="se"></span>--group<span class="o">=</span>nginx <span class="se">\
+</span><span class="se"></span>--with-compat <span class="se">\
+</span><span class="se"></span>--with-file-aio <span class="se">\
+</span><span class="se"></span>--with-threads <span class="se">\
+</span><span class="se"></span>--with-http_addition_module <span class="se">\
+</span><span class="se"></span>--with-http_auth_request_module <span class="se">\
+</span><span class="se"></span>--with-http_dav_module <span class="se">\
+</span><span class="se"></span>--with-http_flv_module <span class="se">\
+</span><span class="se"></span>--with-http_gunzip_module <span class="se">\
+</span><span class="se"></span>--with-http_gzip_static_module <span class="se">\
+</span><span class="se"></span>--with-http_mp4_module <span class="se">\
+</span><span class="se"></span>--with-http_random_index_module <span class="se">\
+</span><span class="se"></span>--with-http_realip_module <span class="se">\
+</span><span class="se"></span>--with-http_secure_link_module <span class="se">\
+</span><span class="se"></span>--with-http_slice_module <span class="se">\
+</span><span class="se"></span>--with-http_ssl_module <span class="se">\
+</span><span class="se"></span>--with-http_stub_status_module <span class="se">\
+</span><span class="se"></span>--with-http_sub_module <span class="se">\
+</span><span class="se"></span>--with-http_v2_module <span class="se">\
+</span><span class="se"></span>--with-mail <span class="se">\
+</span><span class="se"></span>--with-mail_ssl_module <span class="se">\
+</span><span class="se"></span>--with-stream <span class="se">\
+</span><span class="se"></span>--with-stream_realip_module <span class="se">\
+</span><span class="se"></span>--with-stream_ssl_module <span class="se">\
+</span><span class="se"></span>--with-stream_ssl_preread_module <span class="se">\
+</span><span class="se"></span>--with-cc-opt<span class="o">=</span><span class="s1">&#39;-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -m64 -mtune=generic -fPIC&#39;</span> <span class="se">\
+</span><span class="se"></span>--with-ld-opt<span class="o">=</span><span class="s1">&#39;-Wl,-z,relro -Wl,-z,now -pie&#39;</span> <span class="se">\
+</span><span class="se"></span>--with-openssl<span class="o">=</span>/opt/src/openssl-1.1.1f <span class="se">\
+</span><span class="se"></span>--with-openssl-opt<span class="o">=</span>enable-tls1_3 <span class="se">\
+</span><span class="se"></span>--add-module<span class="o">=</span>/opt/src/ngx_brotli
+
+<span class="c1"># 编译并安装</span>
+$ make <span class="o">&amp;&amp;</span> make install
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="nginx配置">Nginx配置</h1>
+<p><strong>HTTP2</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">listen 443 ssl http2;
+</code></pre></td></tr></table>
+</div>
+</div><p>只要在 server{} 下的lisen 443 ssl 后添加 http2 即可。而且从 1.15 开始，只要写了这一句话就不需要再写 ssl on 了。</p>
+<p><strong>只开启TLS 1.2与TLS1.3</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ssl_protocols  TLSv1.2 TLSv1.3;
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>然后我们再修改对应的加密算法算法：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384;
+</code></pre></td></tr></table>
+</div>
+</div><p>默认情况下 Nginx 因为安全原因，没有开启 TLS 1.3 0-RTT，可以通过添加 ssl_early_data on; 指令开启 0-RTT的支持。</p>
+<p><strong>Brotli</strong><br>
+只需要在对应配置文件中，添加下面代码即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">    brotli                     on;
+    brotli_comp_level          6;
+    brotli_min_length          1k;
+    brotli_types               text/plain text/css text/xml text/javascript text/x-component application/json application/javascript application/x-javascript application/xml application/xhtml+xml application/rss+xml application/atom+xml application/x-font-ttf application/vnd.ms-fontobject image/svg+xml image/x-icon font/opentype;
+</code></pre></td></tr></table>
+</div>
+</div><p>下面放一个完整的<code>server{}</code>供大家参考：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
+        listen       443 ssl http2; # 开启 http/2
+        server_name  chenjunxin.com;
+
+        #证书部分
+        ssl_certificate cert/3475595_www.chenjunxin.com.pem;
+        ssl_certificate_key cert/3475595_www.chenjunxin.com.key;
+
+        #TLS 握手优化
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+        keepalive_timeout    75s;
+        keepalive_requests   100;
+     
+        #TLS 版本控制
+        ssl_protocols TLSv1.2 TLSv1.3; # Requires nginx &gt;= 1.13.0 else use TLSv1.2
+        ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384;
+    
+        #服务端加密算法优先 
+        ssl_prefer_server_ciphers on;
+        
+        #开启1.3 0-RTT
+        ssl_early_data on;
+     
+         # GZip 和 Brotli
+        gzip            on;
+        gzip_comp_level 6;
+        gzip_min_length 1k;
+        gzip_types      text/plain text/css text/xml text/javascript text/x-component application/json application/javascript application/x-javascript application/xml application/xhtml+xml application/rss+xml application/atom+xml application/x-font-ttf application/vnd.ms-fontobject image/svg+xml image/x-icon font/opentype;
+        brotli          on;
+        brotli_comp_level   6;
+        brotli_min_length   1k;
+        brotli_types    text/plain text/css text/xml text/javascript text/x-component application/json application/javascript application/x-javascript application/xml application/xhtml+xml application/rss+xml application/atom+xml application/x-font-ttf application/vnd.ms-fontobject image/svg+xml image/x-icon font/opentype;
+    
+        ##OCSP Stapling开启,OCSP是用于在线查询证书吊销情况的服务，使用OCSP Stapling能将证书有效状态的信息缓存到服务器，提高TLS握手速度
+        ssl_stapling  on;   
+        #OCSP Stapling验证开启
+        ssl_stapling_verify on;
+        #用于查询OCSP服务器的DNS
+        resolver 8.8.8.8 114.114.114.114 valid=300s;
+        #查询域名超时时间
+        resolver_timeout 5s;   
+    
+        #开启HSTS，并设置有效期为31536000秒，包括子域名(根据情况可删掉)：includeSubdomains，预加载到浏览器缓存(根据情况可删掉)
+        add_header  Strict-Transport-Security &#34;max-age=31536000; includeSubDomains; preload&#34;;
+
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+    }
+</code></pre></td></tr></table>
+</div>
+</div><p>后面就可以用<code>nginx -t</code>检测配置是否正确，正确的话可以用<code>nginx -s reload</code>重载Nginx。</p>
+<h1 id="验证">验证</h1>
+<p><a href="https://myssl.com/chenjunxin.com?status=success" target="_blank" rel="noopener noreffer">MySSL.com</a>检测A+，整体配置过关。
+<img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Myssl_Result.webp"
+        data-srcset="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Myssl_Result.webp, https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Myssl_Result.webp 1.5x, https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Myssl_Result.webp 2x"
+        data-sizes="auto"
+        alt="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Myssl_Result.webp"
+        title="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Myssl_Result.webp" /></p>
+<p><a href="https://www.ssllabs.com/ssltest/analyze.html?d=chenjunxin.com" target="_blank" rel="noopener noreffer">ssllabs.com</a>检测A+，整体配置过关。
+<img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Ssllabs_Result.webp"
+        data-srcset="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Ssllabs_Result.webp, https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Ssllabs_Result.webp 1.5x, https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Ssllabs_Result.webp 2x"
+        data-sizes="auto"
+        alt="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Ssllabs_Result.webp"
+        title="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Ssllabs_Result.webp" /></p>
+<h2 id="oscp">OSCP</h2>
+<p>在Nginx配置中开启OSCP配置，可以在以上的<a href="https://www.ssllabs.com/ssltest/analyze.html?d=chenjunxin.com" target="_blank" rel="noopener noreffer">ssllabs.com</a>的检测信息中看到:
+<img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_OCSP_Result.webp"
+        data-srcset="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_OCSP_Result.webp, https://oss.chenjunxin.com/picture/blogPicture/9f670eb_OCSP_Result.webp 1.5x, https://oss.chenjunxin.com/picture/blogPicture/9f670eb_OCSP_Result.webp 2x"
+        data-sizes="auto"
+        alt="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_OCSP_Result.webp"
+        title="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_OCSP_Result.webp" /></p>
+<h2 id="http2">HTTP/2</h2>
+<p>通过浏览器的<strong>开发者工具</strong>，我们可以在<strong>Network</strong>栏目中看到<strong>Protocol</strong>中显示 <code>h2</code>有无来判断。
+<img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_HTTP2_Result.webp"
+        data-srcset="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_HTTP2_Result.webp, https://oss.chenjunxin.com/picture/blogPicture/9f670eb_HTTP2_Result.webp 1.5x, https://oss.chenjunxin.com/picture/blogPicture/9f670eb_HTTP2_Result.webp 2x"
+        data-sizes="auto"
+        alt="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_HTTP2_Result.webp"
+        title="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_HTTP2_Result.webp" /></p>
+<h2 id="tls-13-1">TLS 1.3</h2>
+<p>目前主流的浏览器都支持 TLS 1.3 版本：
+Chrome 从 62 版本默认开启 TLS 1.3 的支持，如果是 62 以下的版本，可以进行下列的配置</p>
+<ol>
+<li>工具栏上打开 chrome://flags/</li>
+<li>启用 TLS 1.3
+<img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Chrome_TLS1.3_Setting.webp"
+        data-srcset="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Chrome_TLS1.3_Setting.webp, https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Chrome_TLS1.3_Setting.webp 1.5x, https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Chrome_TLS1.3_Setting.webp 2x"
+        data-sizes="auto"
+        alt="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Chrome_TLS1.3_Setting.webp"
+        title="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Chrome_TLS1.3_Setting.webp" /></li>
+</ol>
+<p>Firefox 从 47 版本默认开启 TLS 1.3 的支持，如果是 47 以下的版本，可以进行下列的配置。</p>
+<ol>
+<li>工具栏上打开 about:config</li>
+<li>修改 security.tls.version.max 为 4</li>
+<li>重新启动浏览器</li>
+</ol>
+<p>然后可以通过浏览器的<strong>开发者工具</strong>中的<strong>Security</strong>栏目看到<strong>Connection</strong>栏目下是否有显示 TLS 1.3
+<img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_TLS1.3_Result.webp"
+        data-srcset="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_TLS1.3_Result.webp, https://oss.chenjunxin.com/picture/blogPicture/9f670eb_TLS1.3_Result.webp 1.5x, https://oss.chenjunxin.com/picture/blogPicture/9f670eb_TLS1.3_Result.webp 2x"
+        data-sizes="auto"
+        alt="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_TLS1.3_Result.webp"
+        title="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_TLS1.3_Result.webp" /></p>
+<h2 id="hsts">HSTS</h2>
+<p>Nginx配置中设置了HSTS，这使得服务器每次response都告诉浏览器所有请求都强制使用https，就算用户手动输入http 地址也会在浏览器内部替换为https 请求，在根源上杜绝浏览器与服务器建立非安全连接。
+<img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_HSTS_Result.webp"
+        data-srcset="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_HSTS_Result.webp, https://oss.chenjunxin.com/picture/blogPicture/9f670eb_HSTS_Result.webp 1.5x, https://oss.chenjunxin.com/picture/blogPicture/9f670eb_HSTS_Result.webp 2x"
+        data-sizes="auto"
+        alt="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_HSTS_Result.webp"
+        title="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_HSTS_Result.webp" /></p>
+<h2 id="brotli-1">Brotli</h2>
+<p>通过浏览器的开发者工具，我们可以在 Network 栏目中，打开具体页面的头信息，看到 **accept-encoding **中有 br 字眼就行。
+<img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Brotli_Result.webp"
+        data-srcset="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Brotli_Result.webp, https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Brotli_Result.webp 1.5x, https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Brotli_Result.webp 2x"
+        data-sizes="auto"
+        alt="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Brotli_Result.webp"
+        title="https://oss.chenjunxin.com/picture/blogPicture/9f670eb_Brotli_Result.webp" /></p>
+<h1 id="参考链接">参考链接</h1>
+<ul>
+<li><a href="https://www.mf8.biz/nginx-install-tls1-3/" target="_blank" rel="noopener noreffer">Nginx 上部署 TLS1.3、Brotli、ECC双证书实践</a></li>
+<li><a href="https://razeencheng.com/post/nginx-tls1.3-draft26" target="_blank" rel="noopener noreffer">TLS1.3正式更新，为Nginx添加TLS1.3的支持</a></li>
+<li><a href="https://herbertgao.com/16/" target="_blank" rel="noopener noreffer">Nginx禁用TLS1.0与1.1的尝试</a></li>
+<li><a href="https://www.jianshu.com/p/aa3f7c4d3a10" target="_blank" rel="noopener noreffer">让Nginx快速支持TLS1.3协议</a></li>
+<li><a href="https://ngx.hk/2018/02/20/%E6%88%91%E5%8D%9A%E5%AE%A2%E7%9A%84nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3.html" target="_blank" rel="noopener noreffer">我博客的nginx配置文件详解</a></li>
+<li><a href="https://chziyue.com/post/37.html" target="_blank" rel="noopener noreffer">使用 OCSP Stapling 来优化 SSL 的速度与隐私安全</a></li>
+<li><a href="https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html#toc_0" target="_blank" rel="noopener noreffer">Strong SSL Security on nginx</a></li>
+<li><a href="https://www.cnblogs.com/xuegqcto/p/10681774.html" target="_blank" rel="noopener noreffer">TLS / SSL密码强化的建议</a></li>
+<li><a href="https://hexuanzhang.com/1716447603.html" target="_blank" rel="noopener noreffer">Nginx 配置双证书（RSA、ECC）</a></li>
+</ul></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-04-08 更新</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://chenjunxin.com/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli/" data-title="Nginx上部署TLS1.3和Brotli" data-hashtags="Nginx,TLS,Brotil"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://chenjunxin.com/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli/" data-hashtag="Nginx"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://chenjunxin.com/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli/" data-title="Nginx上部署TLS1.3和Brotli" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://chenjunxin.com/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli/" data-title="Nginx上部署TLS1.3和Brotli"><i class="fab fa-line fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://chenjunxin.com/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli/" data-title="Nginx上部署TLS1.3和Brotli"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://chenjunxin.com/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli/" data-title="Nginx上部署TLS1.3和Brotli" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://chenjunxin.com/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli/" data-title="Nginx上部署TLS1.3和Brotli" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://chenjunxin.com/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli/" data-title="Nginx上部署TLS1.3和Brotli"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/nginx/">Nginx</a>,&nbsp;<a href="/tags/tls/">TLS</a>,&nbsp;<a href="/tags/brotil/">Brotil</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" class="prev" rel="prev" title="使用Google官方推荐的webp进行图片压缩"><i class="fas fa-angle-left fa-fw"></i>使用Google官方推荐的webp进行图片压缩</a>
+            <a href="/docker%E8%B8%A9%E5%9D%91%E5%90%8E%E7%9A%84%E6%80%BB%E7%BB%93/" class="next" rel="next" title="Docker踩坑后的总结">Docker踩坑后的总结<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.69.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.5"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">JohnnyChan</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">粤ICP备17106857号-2</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript">
+    window.config = {"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"headerMode":{"desktop":"fixed","mobile":"auto"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};
+</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=html5shiv%2CElement.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

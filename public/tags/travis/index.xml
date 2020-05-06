@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Travis - 标签 - </title>
-        <link>https://chenjunxin.com/tags/travis/</link>
+        <link>https://chenjunxin.com/hugo/tags/travis/</link>
         <description>Travis - 标签 - </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</managingEditor>
-            <webMaster>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</webMaster><lastBuildDate>Thu, 06 Feb 2020 21:24:06 &#43;0000</lastBuildDate><atom:link href="https://chenjunxin.com/tags/travis/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</webMaster><lastBuildDate>Thu, 06 Feb 2020 21:24:06 &#43;0000</lastBuildDate><atom:link href="https://chenjunxin.com/hugo/tags/travis/" rel="self" type="application/rss+xml" /><item>
     <title>使用Travis部署Hexo</title>
-    <link>https://chenjunxin.com/%E4%BD%BF%E7%94%A8travis%E9%83%A8%E7%BD%B2hexo/</link>
+    <link>https://chenjunxin.com/hugo/%E4%BD%BF%E7%94%A8travis%E9%83%A8%E7%BD%B2hexo/</link>
     <pubDate>Thu, 06 Feb 2020 21:24:06 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://chenjunxin.com/%E4%BD%BF%E7%94%A8travis%E9%83%A8%E7%BD%B2hexo/</guid>
+    <guid>https://chenjunxin.com/hugo/%E4%BD%BF%E7%94%A8travis%E9%83%A8%E7%BD%B2hexo/</guid>
     <description><![CDATA[<p>使用Travis平台的可持续集成服务来部署自己的Hexo博客。</p>
 <h1 id="环境说明">环境说明</h1>
 <p>Github公开项目(Travis对开源项目是免费，对私有项目是收费的)

@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>AUR - 标签 - </title>
-        <link>https://chenjunxin.com/tags/aur/</link>
+        <link>https://chenjunxin.com/hugo/tags/aur/</link>
         <description>AUR - 标签 - </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</managingEditor>
-            <webMaster>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</webMaster><lastBuildDate>Sun, 01 Mar 2020 18:04:22 &#43;0000</lastBuildDate><atom:link href="https://chenjunxin.com/tags/aur/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</webMaster><lastBuildDate>Sun, 01 Mar 2020 18:04:22 &#43;0000</lastBuildDate><atom:link href="https://chenjunxin.com/hugo/tags/aur/" rel="self" type="application/rss+xml" /><item>
     <title>Manjaro利用AUR装降级软件包</title>
-    <link>https://chenjunxin.com/manjaro%E5%88%A9%E7%94%A8aur%E8%A3%85%E9%99%8D%E7%BA%A7%E8%BD%AF%E4%BB%B6%E5%8C%85/</link>
+    <link>https://chenjunxin.com/hugo/manjaro%E5%88%A9%E7%94%A8aur%E8%A3%85%E9%99%8D%E7%BA%A7%E8%BD%AF%E4%BB%B6%E5%8C%85/</link>
     <pubDate>Sun, 01 Mar 2020 18:04:22 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://chenjunxin.com/manjaro%E5%88%A9%E7%94%A8aur%E8%A3%85%E9%99%8D%E7%BA%A7%E8%BD%AF%E4%BB%B6%E5%8C%85/</guid>
+    <guid>https://chenjunxin.com/hugo/manjaro%E5%88%A9%E7%94%A8aur%E8%A3%85%E9%99%8D%E7%BA%A7%E8%BD%AF%E4%BB%B6%E5%8C%85/</guid>
     <description><![CDATA[<p>系统软件全局升级，导致Jetbrain的idea也升级到了2019.3.3版本，之前的3.2版本的破解失效了，新的版本暂时找不到方法破解，在<a href="https://aur.archlinux.org/" target="_blank" rel="noopener noreffer">AUR</a>上也找不到旧的软件包安装。后面发现可以利用AUR上的脚本文件构建旧版本的软件包进行安装。</p>]]></description>
 </item></channel>
 </rss>

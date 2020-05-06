@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Docker - 标签 - </title>
-        <link>https://chenjunxin.com/tags/docker/</link>
+        <link>https://chenjunxin.com/hugo/tags/docker/</link>
         <description>Docker - 标签 - </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</managingEditor>
-            <webMaster>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</webMaster><lastBuildDate>Sat, 25 Apr 2020 16:24:22 &#43;0000</lastBuildDate><atom:link href="https://chenjunxin.com/tags/docker/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</webMaster><lastBuildDate>Sat, 25 Apr 2020 16:24:22 &#43;0000</lastBuildDate><atom:link href="https://chenjunxin.com/hugo/tags/docker/" rel="self" type="application/rss+xml" /><item>
     <title>Docker踩坑后的总结</title>
-    <link>https://chenjunxin.com/docker%E8%B8%A9%E5%9D%91%E5%90%8E%E7%9A%84%E6%80%BB%E7%BB%93/</link>
+    <link>https://chenjunxin.com/hugo/docker%E8%B8%A9%E5%9D%91%E5%90%8E%E7%9A%84%E6%80%BB%E7%BB%93/</link>
     <pubDate>Sat, 25 Apr 2020 16:24:22 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://chenjunxin.com/docker%E8%B8%A9%E5%9D%91%E5%90%8E%E7%9A%84%E6%80%BB%E7%BB%93/</guid>
+    <guid>https://chenjunxin.com/hugo/docker%E8%B8%A9%E5%9D%91%E5%90%8E%E7%9A%84%E6%80%BB%E7%BB%93/</guid>
     <description><![CDATA[Docker数据挂载 要想将容器的内容保存在主机上，Docker有两种做法：volumn和bind mount,在Linux系统上的Docker]]></description>
 </item></channel>
 </rss>

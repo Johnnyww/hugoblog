@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Samba - 标签 - </title>
-        <link>https://chenjunxin.com/tags/samba/</link>
+        <link>https://chenjunxin.com/hugo/tags/samba/</link>
         <description>Samba - 标签 - </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</managingEditor>
-            <webMaster>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</webMaster><lastBuildDate>Mon, 03 Feb 2020 18:23:35 &#43;0000</lastBuildDate><atom:link href="https://chenjunxin.com/tags/samba/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</webMaster><lastBuildDate>Mon, 03 Feb 2020 18:23:35 &#43;0000</lastBuildDate><atom:link href="https://chenjunxin.com/hugo/tags/samba/" rel="self" type="application/rss+xml" /><item>
     <title>Manjaro搭建Samba和DLNA服务</title>
-    <link>https://chenjunxin.com/manjaro%E6%90%AD%E5%BB%BAsamba%E5%92%8Cdlna%E6%9C%8D%E5%8A%A1/</link>
+    <link>https://chenjunxin.com/hugo/manjaro%E6%90%AD%E5%BB%BAsamba%E5%92%8Cdlna%E6%9C%8D%E5%8A%A1/</link>
     <pubDate>Mon, 03 Feb 2020 18:23:35 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://chenjunxin.com/manjaro%E6%90%AD%E5%BB%BAsamba%E5%92%8Cdlna%E6%9C%8D%E5%8A%A1/</guid>
+    <guid>https://chenjunxin.com/hugo/manjaro%E6%90%AD%E5%BB%BAsamba%E5%92%8Cdlna%E6%9C%8D%E5%8A%A1/</guid>
     <description><![CDATA[<p>需求:想着装好的Manjaro跟同一网络下我的windows系统的笔记本之间能共享借助网络互传些数据,顺便可以的话就让家里的小米电视播放我放在电脑上的一些媒体资源。
 在这过程中，了解了些东西，顺便总结一下。</p>]]></description>
 </item></channel>

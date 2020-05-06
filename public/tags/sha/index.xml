@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>SHA - 标签 - </title>
-        <link>https://chenjunxin.com/tags/sha/</link>
+        <link>https://chenjunxin.com/hugo/tags/sha/</link>
         <description>SHA - 标签 - </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</managingEditor>
-            <webMaster>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</webMaster><lastBuildDate>Tue, 03 Mar 2020 11:50:04 &#43;0000</lastBuildDate><atom:link href="https://chenjunxin.com/tags/sha/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</webMaster><lastBuildDate>Tue, 03 Mar 2020 11:50:04 &#43;0000</lastBuildDate><atom:link href="https://chenjunxin.com/hugo/tags/sha/" rel="self" type="application/rss+xml" /><item>
     <title>MD5,SHA,GPG和PGP</title>
-    <link>https://chenjunxin.com/md5-sha-gpg%E5%92%8Cpgp/</link>
+    <link>https://chenjunxin.com/hugo/md5-sha-gpg%E5%92%8Cpgp/</link>
     <pubDate>Tue, 03 Mar 2020 11:50:04 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://chenjunxin.com/md5-sha-gpg%E5%92%8Cpgp/</guid>
+    <guid>https://chenjunxin.com/hugo/md5-sha-gpg%E5%92%8Cpgp/</guid>
     <description><![CDATA[<h1 id="哈希与加密的区别">哈希与加密的区别</h1>
 <p>首先要了解哈希（Hash）和加密（Encrypt）的区别，正确区别两者是正确选择和使用哈希与加密的基础。
 概括来说，哈希（Hash）是将目标文本转换成具有相同长度的、不可逆的杂凑字符串（或叫做消息摘要），而加密（Encrypt）是将目标文本转换成具有不同长度的、可逆的密文。</p>]]></description>

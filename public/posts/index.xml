@@ -1,62 +1,62 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>所有文章 - </title>
-        <link>https://chenjunxin.com/posts/</link>
+        <link>https://chenjunxin.com/hugo/posts/</link>
         <description>所有文章 | </description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</managingEditor>
-            <webMaster>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</webMaster><lastBuildDate>Mon, 27 Apr 2020 13:03:54 &#43;0000</lastBuildDate><atom:link href="https://chenjunxin.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>bXIuanVueGNobkBnbWFpbC5jb20= (JohnnyChan)</webMaster><lastBuildDate>Mon, 27 Apr 2020 13:03:54 &#43;0000</lastBuildDate><atom:link href="https://chenjunxin.com/hugo/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Base64编码的了解与使用</title>
-    <link>https://chenjunxin.com/base64%E7%BC%96%E7%A0%81%E7%9A%84%E4%BA%86%E8%A7%A3%E4%B8%8E%E4%BD%BF%E7%94%A8/</link>
+    <link>https://chenjunxin.com/hugo/base64%E7%BC%96%E7%A0%81%E7%9A%84%E4%BA%86%E8%A7%A3%E4%B8%8E%E4%BD%BF%E7%94%A8/</link>
     <pubDate>Mon, 27 Apr 2020 13:03:54 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://chenjunxin.com/base64%E7%BC%96%E7%A0%81%E7%9A%84%E4%BA%86%E8%A7%A3%E4%B8%8E%E4%BD%BF%E7%94%A8/</guid>
+    <guid>https://chenjunxin.com/hugo/base64%E7%BC%96%E7%A0%81%E7%9A%84%E4%BA%86%E8%A7%A3%E4%B8%8E%E4%BD%BF%E7%94%A8/</guid>
     <description><![CDATA[Base64是什么 Base64是一种常用的简单的编解码方式，有些网络传送渠道不支持所有字节，比如邮件发送，图像字节不可能全部都是可见字符，所]]></description>
 </item><item>
     <title>Docker踩坑后的总结</title>
-    <link>https://chenjunxin.com/docker%E8%B8%A9%E5%9D%91%E5%90%8E%E7%9A%84%E6%80%BB%E7%BB%93/</link>
+    <link>https://chenjunxin.com/hugo/docker%E8%B8%A9%E5%9D%91%E5%90%8E%E7%9A%84%E6%80%BB%E7%BB%93/</link>
     <pubDate>Sat, 25 Apr 2020 16:24:22 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://chenjunxin.com/docker%E8%B8%A9%E5%9D%91%E5%90%8E%E7%9A%84%E6%80%BB%E7%BB%93/</guid>
+    <guid>https://chenjunxin.com/hugo/docker%E8%B8%A9%E5%9D%91%E5%90%8E%E7%9A%84%E6%80%BB%E7%BB%93/</guid>
     <description><![CDATA[Docker数据挂载 要想将容器的内容保存在主机上，Docker有两种做法：volumn和bind mount,在Linux系统上的Docker]]></description>
 </item><item>
     <title>Nginx上部署TLS1.3和Brotli</title>
-    <link>https://chenjunxin.com/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli/</link>
+    <link>https://chenjunxin.com/hugo/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli/</link>
     <pubDate>Wed, 08 Apr 2020 17:25:32 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://chenjunxin.com/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli/</guid>
+    <guid>https://chenjunxin.com/hugo/nginx%E4%B8%8A%E9%83%A8%E7%BD%B2tls1-3%E5%92%8Cbrotli/</guid>
     <description><![CDATA[<h1 id="ssltls">SSL/TLS</h1>
 <h2 id="什么是-ssltls">什么是 SSL/TLS</h2>
 <p> 传输层安全性协议（英语：Transport Layer Security，缩写作 TLS），及其前身安全套接层（Secure Sockets Layer，缩写作 SSL）是一种安全协议，目的是为互联网通信提供安全及数据完整性保障。网景公司（Netscape）在 1994 年推出首版网页浏览器，网景导航者时，推出 HTTPS 协议，以 SSL 进行加密，这是 SSL 的起源。IETF 将 SSL 进行标准化，1999 年公布第一版 TLS 标准文件。随后又公布 RFC 5246 （2008 年 8 月）与 RFC 6176 （2011 年 3 月）。
  在浏览器、电子邮件、即时通信、VoIP、网络传真等应用程序中，广泛支持这个协议。主要的网站，如 Google、Facebook 等也以这个协议来创建安全连线，发送数据。当前已成为互联网上保密通信的工业标准。</p>]]></description>
 </item><item>
     <title>使用Google官方推荐的webp进行图片压缩</title>
-    <link>https://chenjunxin.com/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/</link>
+    <link>https://chenjunxin.com/hugo/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/</link>
     <pubDate>Sat, 21 Mar 2020 17:11:16 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://chenjunxin.com/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/</guid>
+    <guid>https://chenjunxin.com/hugo/%E4%BD%BF%E7%94%A8google%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9A%84webp%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/</guid>
     <description><![CDATA[WebP介绍 WebP是一种相对较新的开源图像格式，可为Web上的图像提供出色的无损和有损压缩。 使用WebP，网站管理员和Web开发人员可以创]]></description>
 </item><item>
     <title>MD5,SHA,GPG和PGP</title>
-    <link>https://chenjunxin.com/md5-sha-gpg%E5%92%8Cpgp/</link>
+    <link>https://chenjunxin.com/hugo/md5-sha-gpg%E5%92%8Cpgp/</link>
     <pubDate>Tue, 03 Mar 2020 11:50:04 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://chenjunxin.com/md5-sha-gpg%E5%92%8Cpgp/</guid>
+    <guid>https://chenjunxin.com/hugo/md5-sha-gpg%E5%92%8Cpgp/</guid>
     <description><![CDATA[<h1 id="哈希与加密的区别">哈希与加密的区别</h1>
 <p>首先要了解哈希（Hash）和加密（Encrypt）的区别，正确区别两者是正确选择和使用哈希与加密的基础。
 概括来说，哈希（Hash）是将目标文本转换成具有相同长度的、不可逆的杂凑字符串（或叫做消息摘要），而加密（Encrypt）是将目标文本转换成具有不同长度的、可逆的密文。</p>]]></description>
 </item><item>
     <title>博客优化记录</title>
-    <link>https://chenjunxin.com/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95/</link>
+    <link>https://chenjunxin.com/hugo/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95/</link>
     <pubDate>Mon, 02 Mar 2020 13:21:33 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://chenjunxin.com/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95/</guid>
+    <guid>https://chenjunxin.com/hugo/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95/</guid>
     <description><![CDATA[HTTP 协议 HTTP 协议是 HyperText Transfer Protocol（超文本传输协议）的缩写，它是互联网上应用最为广泛的一种网络协议。所有的 WWW 文件都必须遵守这个标准。 HTTP]]></description>
 </item><item>
     <title>CentOS7.x重装配置NodeJS和npm</title>
-    <link>https://chenjunxin.com/centos7-x%E9%87%8D%E8%A3%85%E9%85%8D%E7%BD%AEnodejs%E5%92%8Cnpm/</link>
+    <link>https://chenjunxin.com/hugo/centos7-x%E9%87%8D%E8%A3%85%E9%85%8D%E7%BD%AEnodejs%E5%92%8Cnpm/</link>
     <pubDate>Sun, 01 Mar 2020 20:20:21 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://chenjunxin.com/centos7-x%E9%87%8D%E8%A3%85%E9%85%8D%E7%BD%AEnodejs%E5%92%8Cnpm/</guid>
+    <guid>https://chenjunxin.com/hugo/centos7-x%E9%87%8D%E8%A3%85%E9%85%8D%E7%BD%AEnodejs%E5%92%8Cnpm/</guid>
     <description><![CDATA[<h1 id="nodejs-npm卸载">NodeJS npm卸载</h1>
 <ol>
 <li>先删除一次</li>
@@ -76,24 +76,24 @@ $ yum remove nodejs npm -y
 </div>]]></description>
 </item><item>
     <title>Manjaro利用AUR装降级软件包</title>
-    <link>https://chenjunxin.com/manjaro%E5%88%A9%E7%94%A8aur%E8%A3%85%E9%99%8D%E7%BA%A7%E8%BD%AF%E4%BB%B6%E5%8C%85/</link>
+    <link>https://chenjunxin.com/hugo/manjaro%E5%88%A9%E7%94%A8aur%E8%A3%85%E9%99%8D%E7%BA%A7%E8%BD%AF%E4%BB%B6%E5%8C%85/</link>
     <pubDate>Sun, 01 Mar 2020 18:04:22 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://chenjunxin.com/manjaro%E5%88%A9%E7%94%A8aur%E8%A3%85%E9%99%8D%E7%BA%A7%E8%BD%AF%E4%BB%B6%E5%8C%85/</guid>
+    <guid>https://chenjunxin.com/hugo/manjaro%E5%88%A9%E7%94%A8aur%E8%A3%85%E9%99%8D%E7%BA%A7%E8%BD%AF%E4%BB%B6%E5%8C%85/</guid>
     <description><![CDATA[<p>系统软件全局升级，导致Jetbrain的idea也升级到了2019.3.3版本，之前的3.2版本的破解失效了，新的版本暂时找不到方法破解，在<a href="https://aur.archlinux.org/" target="_blank" rel="noopener noreffer">AUR</a>上也找不到旧的软件包安装。后面发现可以利用AUR上的脚本文件构建旧版本的软件包进行安装。</p>]]></description>
 </item><item>
     <title>HostWinds踩坑记录</title>
-    <link>https://chenjunxin.com/hostwinds%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</link>
+    <link>https://chenjunxin.com/hugo/hostwinds%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</link>
     <pubDate>Sun, 01 Mar 2020 16:08:45 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://chenjunxin.com/hostwinds%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</guid>
+    <guid>https://chenjunxin.com/hugo/hostwinds%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</guid>
     <description><![CDATA[<p>最近发现在用的Vultr的VPS网络不太稳定，查了几篇评测文章，最后决定试试HostWinds，买了半年的最基础的那个4点多刀的VPS。用起来发现确实是相对比较稳定，速度嘛，没有网上评测的那么夸张，貌似是HostWinds的线路对国内联通的比较友好，我家里是电信的网。后面有机会再试试搬瓦工的CN2 GIA-E 限量版的机型，貌似线路更好点。CN2的最便宜只有49.99美元年付，暂时不想一次买那么久。</p>]]></description>
 </item><item>
     <title>CentOS7上Docker部署V2Ray</title>
-    <link>https://chenjunxin.com/centos7%E4%B8%8Adocker%E9%83%A8%E7%BD%B2v2ray/</link>
+    <link>https://chenjunxin.com/hugo/centos7%E4%B8%8Adocker%E9%83%A8%E7%BD%B2v2ray/</link>
     <pubDate>Sun, 01 Mar 2020 14:29:18 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://chenjunxin.com/centos7%E4%B8%8Adocker%E9%83%A8%E7%BD%B2v2ray/</guid>
+    <guid>https://chenjunxin.com/hugo/centos7%E4%B8%8Adocker%E9%83%A8%E7%BD%B2v2ray/</guid>
     <description><![CDATA[<p>因为之前用的<a href="https://www.vultr.com/" target="_blank" rel="noopener noreffer">Vultr</a>的VPS网络经常不太稳定，昨天换了<a href="https://www.hostwinds.com/" target="_blank" rel="noopener noreffer">HostWinds</a>家的VPS,所以要从头配置起V2Ray,顺便记录一下，方便日后再换VPS用。</p>]]></description>
 </item></channel>
 </rss>
